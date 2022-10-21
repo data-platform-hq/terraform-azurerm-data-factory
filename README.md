@@ -1,5 +1,5 @@
 # Azure Data Factory Terraform module
-Terraform module for creation Azure Resource Group
+Terraform module for creation Azure Data Factory
 
 ## Usage
 
