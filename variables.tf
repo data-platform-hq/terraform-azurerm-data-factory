@@ -98,11 +98,6 @@ variable "virtual_network_enabled" {
 }
 
 # Log Analytics
-variable "log_analytics_enabled" {
-  type    = string
-  default = ""
-}
-
 variable "log_analytics_workspace" {
   type        = map(string)
   description = "Log Analytics Workspace Name to ID map"
@@ -115,7 +110,7 @@ variable "log_category_list" {
     "PipelineRuns",
     "TriggerRuns"
   ]
-  type        = list(any)
+  type        = list(string)
   description = "Categoty list log"
 }
 
