@@ -33,9 +33,3 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
 
   depends_on = [azurerm_data_factory.this]
 }
-
-variable "log_retention_days" {
-  default     = 0
-  description = "Retention policy days"
-  type        = number
-}
