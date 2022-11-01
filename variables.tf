@@ -19,64 +19,105 @@ variable "location" {
   description = "Azure location"
 }
 
+variable "sas_expiration_date" {
+  type        = string
+  description = "This token is used by Storage Account linked service for Snowflake and it is expiring on certain date"
+}
+
 # Optional
+variable "prefix" {
+  type        = string
+  description = "Resource name prefix"
+  default     = ""
+}
+
+variable "suffix" {
+  type        = string
+  description = "Resource name suffix"
+  default     = ""
+}
+
+variable "account_kind" {
+  type        = string
+  description = "Kind of account. [BlobStorage|BlockBlobStorage|FileStorage|Storage|StorageV2]"
+  default     = "StorageV2"
+}
+
+variable "account_tier" {
+  type        = string
+  description = "Tier to use for this storage account: [Standard|Premium]"
+  default     = "Standard"
+}
+
+variable "replication_type" {
+  type        = string
+  description = "The type of replication to use: [LRS|GRS|RAGRS|ZRS|GZRS|RAGZRS]"
+  default     = "GRS"
+}
+
+variable "access_tier" {
+  type        = string
+  description = "The access tier for BlobStorage, FileStorage and StorageV2"
+  default     = "Hot"
+}
+
+variable "enable_https_traffic_only" {
+  type        = bool
+  description = "Boolean flag which forces HTTPS if enabled: [true|false]"
+  default     = true
+}
+
+variable "min_tls_version" {
+  type        = string
+  description = "The minimum supported TLS version for the storage account: [TLS1_0|TLS1_1|TLS1_2]"
+  default     = "TLS1_2"
+}
+
+variable "is_hns_enabled" {
+  type        = bool
+  description = "Is Hierarchical Namespace enabled? This can be used with Azure Data Lake Storage Gen 2: [true|false]"
+  default     = true
+}
+
+variable "network_rules" {
+  type        = list(any)
+  description = "List of network rules maps"
+  default     = []
+}
+
 variable "tags" {
   type        = map(any)
   description = "A mapping of tags to assign to the resource"
   default     = {}
 }
 
-variable "public_network_enabled" {
-  type        = bool
-  description = "Is the Data Factory visible to the public network?"
-  default     = false
-}
-
-variable "managed_virtual_network_enabled" {
-  type        = bool
-  description = "Is Managed Virtual Network enabled?"
-  default     = true
-}
-
-variable "cleanup_enabled" {
-  type        = bool
-  description = "Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false"
-  default     = true
-}
-
-variable "compute_type" {
+variable "default_action" {
   type        = string
-  description = "Compute type of the cluster which will execute data flow job: [General|ComputeOptimized|MemoryOptimized]"
-  default     = "General"
+  description = "Specifies the default action of allow or deny when no other rules match"
+  default     = "Deny"
 }
 
-variable "core_count" {
-  type        = number
-  description = "Core count of the cluster which will execute data flow job: [8|16|32|48|144|272]"
-  default     = 8
+variable "bypass" {
+  type        = set(string)
+  description = "Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Valid options are any combination of Logging, Metrics, AzureServices, or None."
+  default     = ["AzureServices"]
 }
 
-variable "key_vault_name" {
-  type        = string
-  description = "Azure Key Vault name to use"
-  default     = ""
-}
-
-variable "key_vault_resource_group" {
-  type        = string
-  description = "Azure Key Vault resource group (if differs from from target one)"
-  default     = ""
-}
-
-variable "vsts_configuration" {
+variable "ip_rules" {
   type        = map(string)
-  description = "Code storage configuration map"
-  default     = {}
+  description = "Map of IP addresses permitted to access storage account"
+  default     = null
+}
+
+variable "virtual_networks" {
+  type        = list(string)
+  description = "A list of resource ids for subnets"
+  default     = null
 }
 
 variable "permissions" {
   type        = list(map(string))
-  description = "Data Factory permision map"
+  description = "Storage permision map"
   default = [
     {
       object_id = null
@@ -85,14 +126,36 @@ variable "permissions" {
   ]
 }
 
-variable "time_to_live_min" {
-  type        = string
-  description = "TTL for Integration runtime"
-  default     = 15
+variable "log_analytics_workspace" {
+  type        = map(string)
+  default     = {}
+  description = "Log Analytics Workspace Name to ID map"
 }
 
-variable "virtual_network_enabled" {
-  type        = bool
-  description = "Managed Virtual Network for Integration runtime"
-  default     = true
+variable "log_category_list" {
+  type        = list(string)
+  description = "Storegr log category list"
+  default = [
+    "StorageRead",
+    "StorageWrite",
+    "StorageDelete"
+  ]
+}
+
+variable "log_retention_days" {
+  default     = 0
+  description = "Retention policy days"
+  type        = number
+}
+
+variable "metric_retention_days" {
+  default     = 0
+  description = "Retention policy days"
+  type        = number
+}
+
+variable "destination_type" {
+  type        = string
+  description = "Log analytics destination type"
+  default     = "Dedicated"
 }
