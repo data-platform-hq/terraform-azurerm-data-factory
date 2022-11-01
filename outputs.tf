@@ -9,7 +9,7 @@ output "name" {
 }
 
 output "identity" {
-  value       = azurerm_data_factory.this.identity.*
+  value       = azurerm_data_factory.this.identity[*]
   description = "Data Factory Managed Identity"
 }
 
