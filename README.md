@@ -55,8 +55,8 @@ No modules.
 | <a name="input_destination_type"></a> [destination\_type](#input\destination\_type) | Log analytics destination type | `string` | `"Dedicated"` | no |
 | <a name="input_metric_retention_days"></a> [metric\_retention\_days](#input\metric\_retention\_days) | Metric policy days | `number` | `0` | no |
 | <a name="input_log_retention_days"></a> [log\_retention\_days](#input\log\_retention\_days) | Retention log policy days | `number` | `0` | no |
-| <a name="input_log_category_list"></a> [log\_log\_category\_list](#input\log\_category\_list) | Categoty list log | `list(string)` | <pre>[<br> "ActivityRuns", <br>  "PipelineRuns",<br> "TriggerRuns" <br> ]</pre> | no |
-| <a name="input_log_analytics_workspace"></a> [log\log\_analytics\_workspace](#input\log\_analytics\_workspace) | Log Analytics Workspace Name to ID map | `map(string)` | `{}` | no |
+| <a name="input_log_category_list"></a> [log\_category\_list](#input\log\_category\_list) | Categoty list log | `list(string)` | <pre>[<br> "ActivityRuns", <br> "PipelineRuns",<br> "TriggerRuns" <br> ]</pre> | no |
+| <a name="input_log_analytics_workspace"></a> [log\_analytics\_workspace](#input\log\_analytics\_workspace) | Log Analytics Workspace Name to ID map | `map(string)` | `{}` | no |
 
 ## Outputs
 
