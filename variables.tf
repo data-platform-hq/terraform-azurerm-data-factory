@@ -91,22 +91,22 @@ variable "time_to_live_min" {
   default     = 15
 }
 
-variable "destination_type" {
-  type        = string
-  default     = "Dedicated"
-  description = "Log analytics destination type"
+variable "virtual_network_enabled" {
+  type        = bool
+  description = "Managed Virtual Network for Integration runtime"
+  default     = true
 }
 
-variable "metric_retention_days" {
-  default     = 0
-  type        = number
-  description = "Metric policy days"
+# Log Analytics
+variable "log_analytics_enabled" {
+  type    = string
+  default = ""
 }
 
-variable "log_retention_days" {
-  default     = 0
-  type        = number
-  description = "Retention log policy days"
+variable "log_analytics_workspace" {
+  type        = map(string)
+  description = "Log Analytics Workspace Name to ID map"
+  default     = {}
 }
 
 variable "log_category_list" {
@@ -115,12 +115,24 @@ variable "log_category_list" {
     "PipelineRuns",
     "TriggerRuns"
   ]
-  type        = list(string)
+  type        = list(any)
   description = "Categoty list log"
 }
 
-variable "log_analytics_workspace" {
-  type        = map(string)
-  description = "Log Analytics Workspace Name to ID map"
-  default     = {}
+variable "log_retention_days" {
+  default     = 0
+  type        = number
+  description = "Retention policy days"
+}
+
+variable "metric_retention_days" {
+  default     = 0
+  type        = number
+  description = "Retention policy days"
+}
+
+variable "destination_type" {
+  type        = string
+  default     = "Dedicated"
+  description = "Log analytics destination type"
 }
