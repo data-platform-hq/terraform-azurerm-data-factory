@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.0.1...v1.0.2) (2022-11-03)
+
+
+### Bug Fixes
+
+* change description ([154f47a](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/154f47a2263d9f1611d8e27b444fe74f18d0ac9c))
+
 ## [1.0.1](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.0.0...v1.0.1) (2022-11-01)
 
 
