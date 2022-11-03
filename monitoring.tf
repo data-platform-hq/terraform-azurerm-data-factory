@@ -16,7 +16,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
 
       retention_policy {
         days    = var.log_retention_days
-        enabled = false
+        enabled = true
       }
     }
   }
@@ -27,7 +27,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
 
     retention_policy {
       days    = var.metric_retention_days
-      enabled = false
+      enabled = true
     }
   }
 
