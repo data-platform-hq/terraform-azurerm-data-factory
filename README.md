@@ -28,7 +28,8 @@ No modules.
 | [azurerm_data_factory.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory) | resource |
 | [azurerm_data_factory_integration_runtime_azure.auto_resolve](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory_integration_runtime_azure) | resource |
 | [azurerm_data_factory_linked_service_key_vault.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory_linked_service_key_vault) | resource |
-| [azurerm_monitor_diagnostic_setting.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting) | resource |
+| [azurerm_monitor_diagnostic_setting.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/monitor_diagnostic_categories) | resource |
+| [data.azurerm_monitor_diagnostic_categories.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting) | resource |
 | [azurerm_key_vault_access_policy.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault_access_policy) | resource |
 | [azurerm_role_assignment.data_factory](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azurerm_key_vault.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/key_vault) | data source |
@@ -53,11 +54,8 @@ No modules.
 | <a name="input_time_to_live_min"></a> [time\_to\_live\_min](#input\_time\_to\_live\_min) | TTL for Integration runtime | `string` | `15` | no |
 | <a name="input_virtual_network_enabled"></a> [virtual\_network\_enabled](#input\_virtual\_network\_enabled) | Managed Virtual Network for Integration runtime | `bool` | `true` | no |
 | <a name="input_vsts_configuration"></a> [vsts\_configuration](#input\_vsts\_configuration) | Code storage configuration map | `map(string)` | `{}` | no |
-| <a name="input_destination_type"></a> [destination\_type](#input\destination\_type) | Log analytics destination type | `string` | `"Dedicated"` | no |
-| <a name="input_metric_retention_days"></a> [metric\_retention\_days](#input\metric\_retention\_days) | Metric policy days | `number` | `7` | no |
-| <a name="input_log_retention_days"></a> [log\_retention\_days](#input\log\_retention\_days) | Retention log policy days | `number` | `7` | no |
-| <a name="input_log_category_list"></a> [log\_category\_list](#input\log\_category\_list) | Categoty list log | `list(string)` | <pre>[<br> "ActivityRuns", <br> "PipelineRuns",<br> "TriggerRuns" <br> ]</pre> | no |
 | <a name="input_log_analytics_workspace"></a> [log\_analytics\_workspace](#input\log\_analytics\_workspace) | Log Analytics Workspace Name to ID map | `map(string)` | `{}` | no |
+| <a name="input_analytics_destination_type"></a> [analytics\_destination\_type](#input\log\_analytics\_destination\_type) | Log analytics destination type | `string` | `Dedicated` | no |
 
 ## Outputs
 

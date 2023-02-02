@@ -1,35 +1,28 @@
-resource "azurerm_monitor_diagnostic_setting" "this" {
-  for_each = { for k, v in var.log_analytics_workspace : k => v }
+data "azurerm_monitor_diagnostic_categories" "this" {
+  for_each = var.log_analytics_workspace
 
+  resource_id = azurerm_data_factory.this.id
+}
+
+resource "azurerm_monitor_diagnostic_setting" "this" {
+  for_each = var.log_analytics_workspace
 
   name                           = "monitoring-${var.project}-${var.env}-${var.location}"
   target_resource_id             = azurerm_data_factory.this.id
   log_analytics_workspace_id     = each.value
-  log_analytics_destination_type = var.destination_type
+  log_analytics_destination_type = var.analytics_destination_type
 
-
-  dynamic "log" {
-    for_each = var.log_category_list
+  dynamic "enabled_log" {
+    for_each = data.azurerm_monitor_diagnostic_categories.this[each.key].log_category_types
     content {
-      category = log.value
-      enabled  = true
-
-      retention_policy {
-        days    = var.log_retention_days
-        enabled = true
-      }
+      category = enabled_log.value
     }
   }
 
-  metric {
-    category = "AllMetrics"
-    enabled  = true
-
-    retention_policy {
-      days    = var.metric_retention_days
-      enabled = true
+  dynamic "metric" {
+    for_each = data.azurerm_monitor_diagnostic_categories.this[each.key].metrics
+    content {
+      category = metric.value
     }
   }
-
-  depends_on = [azurerm_data_factory.this]
 }

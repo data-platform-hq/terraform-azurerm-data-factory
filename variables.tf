@@ -104,29 +104,7 @@ variable "log_analytics_workspace" {
   default     = {}
 }
 
-variable "log_category_list" {
-  default = [
-    "ActivityRuns",
-    "PipelineRuns",
-    "TriggerRuns"
-  ]
-  type        = list(string)
-  description = "Categoty list log"
-}
-
-variable "log_retention_days" {
-  default     = 7
-  type        = number
-  description = "Retention policy days"
-}
-
-variable "metric_retention_days" {
-  default     = 7
-  type        = number
-  description = "Retention policy days"
-}
-
-variable "destination_type" {
+variable "analytics_destination_type" {
   type        = string
   default     = "Dedicated"
   description = "Log analytics destination type"
