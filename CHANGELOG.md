@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.0.3...v1.0.4) (2023-02-03)
+
+
+### Bug Fixes
+
+* chenged version azure ([8c9cd3c](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/8c9cd3cb00d5b407ffafe3f6c7fcc0f60e8a958e))
+
 ## [1.0.3](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.0.2...v1.0.3) (2023-02-02)
 
 
