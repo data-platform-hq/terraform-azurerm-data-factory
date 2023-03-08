@@ -1,4 +1,3 @@
-# Required
 variable "project" {
   type        = string
   description = "Project name"
@@ -19,7 +18,24 @@ variable "location" {
   description = "Azure location"
 }
 
-# Optional
+variable "custom_adf_name" {
+  type        = string
+  description = "Specifies the name of the Data Factory"
+  default     = null
+}
+
+variable "custom_default_ir_name" {
+  type        = string
+  description = "Specifies the name of the Managed Integration Runtime"
+  default     = null
+}
+
+variable "custom_diagnostics_name" {
+  type        = string
+  description = "Custom name for Diagnostic Settings that monitors ADF"
+  default     = null
+}
+
 variable "tags" {
   type        = map(any)
   description = "A mapping of tags to assign to the resource"

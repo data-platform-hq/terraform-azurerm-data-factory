@@ -1,5 +1,7 @@
 locals {
   key_vault_resource_group = var.key_vault_resource_group == "" ? var.resource_group : var.key_vault_resource_group
+  adf_name                 = var.custom_adf_name == null ? "adf-${var.project}-${var.env}-${var.location}" : var.custom_adf_name
+  ir_name                  = var.custom_default_ir_name == null ? "DefaultAutoResolve" : var.custom_default_ir_name
 }
 
 data "azurerm_key_vault" "this" {
@@ -10,7 +12,7 @@ data "azurerm_key_vault" "this" {
 }
 
 resource "azurerm_data_factory" "this" {
-  name                            = "adf-${var.project}-${var.env}-${var.location}"
+  name                            = local.adf_name
   location                        = var.location
   resource_group_name             = var.resource_group
   public_network_enabled          = var.public_network_enabled
@@ -75,7 +77,7 @@ resource "azurerm_role_assignment" "data_factory" {
 resource "azurerm_data_factory_integration_runtime_azure" "auto_resolve" {
   data_factory_id         = azurerm_data_factory.this.id
   location                = "AutoResolve"
-  name                    = "DefaultAutoResolve"
+  name                    = local.ir_name
   time_to_live_min        = var.time_to_live_min
   virtual_network_enabled = var.virtual_network_enabled
   cleanup_enabled         = var.cleanup_enabled
