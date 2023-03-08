@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.0.4...v1.1.0) (2023-03-08)
+
+
+### Bug Fixes
+
+* custom diagnostics name variable ([d27dc32](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/d27dc32c4e583abfca938d2998f86935972faee8))
+* removed unused variable ([f8bb1bc](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/f8bb1bccaf6491e6783f71fae9f525e7558425d7))
+
+
+### Features
+
+* added custom name for diagnostics ([daf80ef](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/daf80ef221766f7b197bd519e5088fae82ae994d))
+* added custom names for resources ([987faff](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/987faff873514059033ecbb6d76c3e4370e25e8d))
+
 ## [1.0.4](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.0.3...v1.0.4) (2023-02-03)
 
 
