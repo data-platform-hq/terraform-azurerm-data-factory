@@ -26,21 +26,9 @@ variable "custom_adf_name" {
   default     = null
 }
 
-variable "custom_key_vault_ls_name" {
-  type        = string
-  description = "Specifies the name of the Data Factory Linked Service Key Vault"
-  default     = null
-}
-
 variable "custom_default_ir_name" {
   type        = string
   description = "Specifies the name of the Managed Integration Runtime"
-  default     = null
-}
-
-variable "custom_diagnostics_name" {
-  type        = string
-  description = "Specifies name for Diagnostic Settings that monitors Storage Account sub-resources"
   default     = null
 }
 
