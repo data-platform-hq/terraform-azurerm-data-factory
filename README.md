@@ -2,6 +2,33 @@
 Terraform module for creation Azure Data Factory
 
 ## Usage
+Current module allow you to create resources for Data Factory and its monitoring. Also it can create [managed private endpoints](https://learn.microsoft.com/en-us/azure/data-factory/managed-virtual-network-private-endpoint#managed-private-endpoints). 
+Here we provide some examples of how to provision it with managed_private_endpoint to the Databricks workspace.
+Be aware that private endpoint connection is created in a Pending state and an approval workflow is initiated. 
+    ![Managed private endpoint approvement](img/aprrove_endpoint.png)
+To finish this configuration you need to open Azure Databricks Service (or other Azure Service you connect to), chose "Networking" in Settings section. Change to Private endpoint connections tab and select created connection (it should be in a pending state) and press "Approve" button.
+
+```hcl
+module "data_factory" {
+  source  = "data-platform-hq/data-factory/azurerm"
+  version = "1.1.0"
+
+  project                 = "datahq"
+  env                     = "example"
+  location                = "eastus"
+  resource_group          = "example-rg"
+  key_vault_name          = "example-key-vault"
+
+  managed_private_endpoint = [{
+    name               = "adb"
+    target_resource_id = /subscriptions/fgd8a3s8-623d-26c8-b989-f3987042b41s/resourceGroups/example-rg/providers/Microsoft.Databricks/workspaces/dbw-example-resource-id
+    subresource_name   = "databricks_ui_api"
+  }]
+
+  # Assigns Azure DevOps repo to ADF. Comment it out in case of not using ADO provider.
+  # vsts_configuration = 
+}
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -59,7 +86,7 @@ No modules.
 | <a name="input_vsts_configuration"></a> [vsts\_configuration](#input\_vsts\_configuration)                                            | Code storage configuration map                                                                                                              | `map(string)`                                                                                     | `{}`                                                                          |    no    |
 | <a name="input_log_analytics_workspace"></a> [log\_analytics\_workspace](#input\log\_analytics\_workspace)                            | Log Analytics Workspace Name to ID map                                                                                                      | `map(string)`                                                                                     | `{}`                                                                          |    no    |
 | <a name="input_analytics_destination_type"></a> [analytics\_destination\_type](#input\log\_analytics\_destination\_type)              | Log analytics destination type                                                                                                              | `string`                                                                                          | `Dedicated`                                                                   |    no    |
-| <a name="input_managed_private_endpoint"></a> [managed\_private\_endpoint](#input\managed\_private\_endpoint)                         | The ID  and sub resource name of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to   | <pre> map(object({ <br>   target_resource_id = string <br>   subresource_name   = string <br> })) | `{}`                                                                          |    no    |
+| <a name="input_managed_private_endpoint"></a> [managed\_private\_endpoint](#input\managed\_private\_endpoint)                         | The ID  and sub resource name of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to   | <pre> set(object({ <br>   target_resource_id = string <br>   subresource_name   = string <br> })) | `[]`                                                                          |    no    |
 
 ## Outputs
 
