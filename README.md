@@ -7,11 +7,10 @@ Here we provide some examples of how to provision it with managed_private_endpoi
 Be aware that private endpoint connection is created in a Pending state and an approval workflow is initiated. 
     ![Managed private endpoint approvement](img/aprrove_endpoint.png)
 To finish this configuration you need to open Azure Databricks Service (or other Azure Service you connect to), chose "Networking" in Settings section. Change to Private endpoint connections tab and select created connection (it should be in a pending state) and press "Approve" button.
-
+If your deployment creates multiple managed private endpoints for different Azure services, you must approve each one.  
 ```hcl
 module "data_factory" {
   source  = "data-platform-hq/data-factory/azurerm"
-  version = "1.1.0"
 
   project                 = "datahq"
   env                     = "example"
