@@ -1,14 +1,20 @@
 # Azure Data Factory Terraform module
-Terraform module for creation Azure Data Factory
+Terraform module for Azure Data Factory and it's components creation
 
 ## Usage
-Current module allow you to create resources for Data Factory and its monitoring. Also it can create [managed private endpoints](https://learn.microsoft.com/en-us/azure/data-factory/managed-virtual-network-private-endpoint#managed-private-endpoints). 
-Here we provide some examples of how to provision it with managed_private_endpoint to the Databricks workspace.
-Be aware that private endpoint connection is created in a Pending state and an approval workflow is initiated. 
-    ![Managed private endpoint approvement](img/aprrove_endpoint.png)
-To finish this configuration you need to open Azure Databricks Service (or other Azure Service you connect to), chose "Networking" in Settings section. Change to Private endpoint connections tab and select created connection (it should be in a pending state) and press "Approve" button.
-If your deployment creates multiple managed private endpoints for different Azure services, you must approve each one.  
+Currently, this module provides an ability to provision Data Factory Studio, Integration Runtime within managed network, Diagnostic Settings and Managed endpoints. 
+
 ```hcl
+data "azurerm_databricks_workspace" "example" {
+  name                = "example-adb-workspace"
+  resource_group_name = "example-rg"
+}
+
+data "azurerm_log_analytics_workspace" "example" {
+  name                = "example-law-workspace"
+  resource_group_name = "example-rg"
+}
+
 module "data_factory" {
   source  = "data-platform-hq/data-factory/azurerm"
 
@@ -18,16 +24,28 @@ module "data_factory" {
   resource_group          = "example-rg"
   key_vault_name          = "example-key-vault"
 
+  # Target Log Analytics Workspace used by Diagnostic Settings for log/metrics storage
+  log_analytics_workspace = { 
+    (data.azurerm_log_analytics_workspace.example.name) = data.azurerm_log_analytics_workspace.example.id 
+  }
+  
+  # Set of Objects with parameters to create Managed endpoints in Integration Runtime Managed network.
   managed_private_endpoint = [{
     name               = "adb"
-    target_resource_id = /subscriptions/fgd8a3s8-623d-26c8-b989-f3987042b41s/resourceGroups/example-rg/providers/Microsoft.Databricks/workspaces/dbw-example-resource-id
+    target_resource_id = data.azurerm_databricks_workspace.example.id
     subresource_name   = "databricks_ui_api"
   }]
-
-  # Assigns Azure DevOps repo to ADF. Comment it out in case of not using ADO provider.
-  # vsts_configuration = 
 }
 ```
+### Note: 
+Be aware that private endpoint connection is created in a Pending state and a manual approval is required.
+
+To finish this configuration you have to open Azure Databricks Service (or other Azure Service you connect to), select "Networking" in Settings section. 
+Change to Private endpoint connections tab and select created connection (it should be in a pending state) and press "Approve" button.
+
+If your deployment creates multiple managed private endpoints for different Azure services, you must approve all of them.
+
+![Managed private endpoint approve](img/approve_endpoint.png)
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
