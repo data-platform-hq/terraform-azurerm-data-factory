@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.1.0...v1.2.0) (2023-04-05)
+
+
+### Features
+
+* added managed_private_endpoint ([97a992f](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/97a992fbbfb26d3a54da5d926cc28b61e3dce9e1))
+
 # [1.1.0](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.0.4...v1.1.0) (2023-03-08)
 
 
