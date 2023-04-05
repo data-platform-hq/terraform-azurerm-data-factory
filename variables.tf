@@ -125,3 +125,13 @@ variable "analytics_destination_type" {
   default     = "Dedicated"
   description = "Log analytics destination type"
 }
+
+variable "managed_private_endpoint" {
+  type = set(object({
+    name               = string
+    target_resource_id = string
+    subresource_name   = string
+  }))
+  description = "The ID  and sub resource name of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to"
+  default     = []
+}
