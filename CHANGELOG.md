@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.0...v1.3.1) (2023-09-15)
+
+
+### Bug Fixes
+
+* fixed output when shir is disabled ([e1ef4dc](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/e1ef4dc8eea23c49639419d20e11ae1d952045a5))
+
 # [1.3.0](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.2.0...v1.3.0) (2023-09-15)
 
 
