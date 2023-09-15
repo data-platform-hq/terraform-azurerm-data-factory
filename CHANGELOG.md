@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.2.0...v1.3.0) (2023-09-15)
+
+
+### Features
+
+* self hosted integration runtime ([f91b38e](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/f91b38ee73a8c5581b392c1998cadad620af669f))
+
 # [1.2.0](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.1.0...v1.2.0) (2023-04-05)
 
 
