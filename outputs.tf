@@ -24,6 +24,6 @@ output "default_integration_runtime_name" {
 }
 
 output "self_hosted_integration_runtime_key" {
-  value       = azurerm_data_factory_integration_runtime_self_hosted.this[0].primary_authorization_key
+  value       = try(azurerm_data_factory_integration_runtime_self_hosted.this[0].primary_authorization_key, null)
   description = "Self hosted integration runtime primary authorization key"
 }
