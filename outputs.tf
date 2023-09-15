@@ -22,3 +22,8 @@ output "default_integration_runtime_name" {
   value       = azurerm_data_factory_integration_runtime_azure.auto_resolve.name
   description = "Data Factory Default Integration Runtime Name"
 }
+
+output "self_hosted_integration_runtime_key" {
+  value       = azurerm_data_factory_integration_runtime_self_hosted.this[0].primary_authorization_key
+  description = "Self hosted integration runtime primary authorization key"
+}

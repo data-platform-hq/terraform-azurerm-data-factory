@@ -2,6 +2,7 @@ locals {
   key_vault_resource_group = var.key_vault_resource_group == "" ? var.resource_group : var.key_vault_resource_group
   adf_name                 = var.custom_adf_name == null ? "adf-${var.project}-${var.env}-${var.location}" : var.custom_adf_name
   ir_name                  = var.custom_default_ir_name == null ? "DefaultAutoResolve" : var.custom_default_ir_name
+  shir_name                = var.custom_shir_name == null ? "shir-${var.project}-${var.env}-${var.location}" : var.custom_shir_name
 }
 
 data "azurerm_key_vault" "this" {
@@ -83,4 +84,11 @@ resource "azurerm_data_factory_integration_runtime_azure" "auto_resolve" {
   cleanup_enabled         = var.cleanup_enabled
   compute_type            = var.compute_type
   core_count              = var.core_count
+}
+
+resource "azurerm_data_factory_integration_runtime_self_hosted" "this" {
+  count = var.self_hosted_integration_runtime_enabled ? 1 : 0
+
+  name            = local.shir_name
+  data_factory_id = azurerm_data_factory.this.id
 }
