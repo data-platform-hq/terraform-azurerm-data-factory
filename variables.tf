@@ -32,7 +32,13 @@ variable "custom_default_ir_name" {
 
 variable "custom_diagnostics_name" {
   type        = string
-  description = "Custom name for Diagnostic Settings that monitors ADF"
+  description = "Specifies the name of Diagnostic Settings that monitors ADF"
+  default     = null
+}
+
+variable "custom_shir_name" {
+  type        = string
+  description = "Specifies the name of Self Hosted Integration runtime"
   default     = null
 }
 
@@ -111,6 +117,12 @@ variable "virtual_network_enabled" {
   type        = bool
   description = "Managed Virtual Network for Integration runtime"
   default     = true
+}
+
+variable "self_hosted_integration_runtime_enabled" {
+  type        = bool
+  description = "Self Hosted Integration runtime"
+  default     = false
 }
 
 # Log Analytics
