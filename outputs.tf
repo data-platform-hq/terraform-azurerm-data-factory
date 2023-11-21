@@ -13,11 +13,6 @@ output "identity" {
   description = "Data Factory Managed Identity"
 }
 
-output "linked_service_key_vault_name" {
-  value       = azurerm_data_factory_linked_service_key_vault.this[0].name
-  description = "Data Factory Linked Service Key Vault Name"
-}
-
 output "default_integration_runtime_name" {
   value       = azurerm_data_factory_integration_runtime_azure.auto_resolve.name
   description = "Data Factory Default Integration Runtime Name"
