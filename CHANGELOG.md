@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.1...v1.3.2) (2023-11-25)
+
+
+### Bug Fixes
+
+* Merge pull request [#11](https://github.com/data-platform-hq/terraform-azurerm-data-factory/issues/11) from data-platform-hq/fix/key-vault-service-in-data-factory ([05dc617](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/05dc617cd6af7e320a4de8c34059a5120270e5bd))
+
 ## [1.3.1](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.0...v1.3.1) (2023-09-15)
 
 
