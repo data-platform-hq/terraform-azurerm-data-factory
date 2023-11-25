@@ -1,15 +1,7 @@
 locals {
-  key_vault_resource_group = var.key_vault_resource_group == "" ? var.resource_group : var.key_vault_resource_group
-  adf_name                 = var.custom_adf_name == null ? "adf-${var.project}-${var.env}-${var.location}" : var.custom_adf_name
-  ir_name                  = var.custom_default_ir_name == null ? "DefaultAutoResolve" : var.custom_default_ir_name
-  shir_name                = var.custom_shir_name == null ? "shir-${var.project}-${var.env}-${var.location}" : var.custom_shir_name
-}
-
-data "azurerm_key_vault" "this" {
-  count = length(var.key_vault_name) == 0 ? 0 : 1
-
-  name                = var.key_vault_name
-  resource_group_name = local.key_vault_resource_group
+  adf_name  = var.custom_adf_name == null ? "adf-${var.project}-${var.env}-${var.location}" : var.custom_adf_name
+  ir_name   = var.custom_default_ir_name == null ? "DefaultAutoResolve" : var.custom_default_ir_name
+  shir_name = var.custom_shir_name == null ? "shir-${var.project}-${var.env}-${var.location}" : var.custom_shir_name
 }
 
 resource "azurerm_data_factory" "this" {
@@ -42,27 +34,6 @@ resource "azurerm_data_factory" "this" {
       tenant_id       = var.vsts_configuration.tenant_id
     }
   }
-}
-
-resource "azurerm_key_vault_access_policy" "this" {
-  count = length(var.key_vault_name) == 0 ? 0 : 1
-
-  key_vault_id = data.azurerm_key_vault.this[0].id
-
-  tenant_id = azurerm_data_factory.this.identity[0].tenant_id
-  object_id = azurerm_data_factory.this.identity[0].principal_id
-
-  secret_permissions = [
-    "Get",
-    "List"
-  ]
-}
-
-resource "azurerm_data_factory_linked_service_key_vault" "this" {
-  count           = length(var.key_vault_name) == 0 ? 0 : 1
-  name            = "key-vault"
-  data_factory_id = azurerm_data_factory.this.id
-  key_vault_id    = data.azurerm_key_vault.this[0].id
 }
 
 resource "azurerm_role_assignment" "data_factory" {

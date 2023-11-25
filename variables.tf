@@ -78,18 +78,6 @@ variable "core_count" {
   default     = 8
 }
 
-variable "key_vault_name" {
-  type        = string
-  description = "Azure Key Vault name to use"
-  default     = ""
-}
-
-variable "key_vault_resource_group" {
-  type        = string
-  description = "Azure Key Vault resource group (if differs from from target one)"
-  default     = ""
-}
-
 variable "vsts_configuration" {
   type        = map(string)
   description = "Code storage configuration map"
