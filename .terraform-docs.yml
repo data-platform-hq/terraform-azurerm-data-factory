@@ -2,7 +2,7 @@ formatter: "markdown table" # this is required
 
 version: ""
 
-header-from: main.tf
+header-from: "main.tf"
 footer-from: ""
 
 recursive:
