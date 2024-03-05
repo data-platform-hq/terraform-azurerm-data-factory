@@ -90,7 +90,7 @@ No modules.
 | <a name="input_custom_diagnostics_name"></a> [custom\_diagnostics\_name](#input\_custom\_diagnostics\_name) | Specifies the name of Diagnostic Settings that monitors ADF | `string` | `null` | no |
 | <a name="input_custom_shir_name"></a> [custom\_shir\_name](#input\_custom\_shir\_name) | Specifies the name of Self Hosted Integration runtime | `string` | `null` | no |
 | <a name="input_env"></a> [env](#input\_env) | Environment name | `string` | n/a | yes |
-| <a name="input_global_parameter"></a> [global\_parameter](#input\_global\_parameter) | Configuration of automation modules | <pre>list(object({<br>    name  = string<br>    type  = optional(string, "String")<br>    value = string<br>  }))</pre> | `[]` | no |
+| <a name="input_global_parameter"></a> [global\_parameter](#input\_global\_parameter) | Configuration of data factory global parameters | <pre>list(object({<br>    name  = string<br>    type  = optional(string, "String")<br>    value = string<br>  }))</pre> | `[]` | no |
 | <a name="input_location"></a> [location](#input\_location) | Azure location | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace"></a> [log\_analytics\_workspace](#input\_log\_analytics\_workspace) | Log Analytics Workspace Name to ID map | `map(string)` | `{}` | no |
 | <a name="input_managed_private_endpoint"></a> [managed\_private\_endpoint](#input\_managed\_private\_endpoint) | The ID  and sub resource name of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to | <pre>set(object({<br>    name               = string<br>    target_resource_id = string<br>    subresource_name   = string<br>  }))</pre> | `[]` | no |

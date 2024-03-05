@@ -143,5 +143,5 @@ variable "global_parameter" {
     value = string
   }))
   default     = []
-  description = "Configuration of automation modules"
+  description = "Configuration of data factory global parameters"
 }
