@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.2...v1.3.3) (2024-03-05)
+
+
+### Bug Fixes
+
+* adf global parameter creation ([22b5ce2](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/22b5ce2fb4626c1a00ece99d3c6bcbe11875b599))
+
 ## [1.3.2](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.1...v1.3.2) (2023-11-25)
 
 
