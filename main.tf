@@ -16,10 +16,14 @@ resource "azurerm_data_factory" "this" {
     type = "SystemAssigned"
   }
 
-  global_parameter {
-    name  = "environment"
-    type  = "String"
-    value = var.env
+  dynamic "global_parameter" {
+    for_each = { for i in var.global_parameter : i.name => i if i.name != null }
+
+    content {
+      name  = global_parameter.value.name
+      type  = global_parameter.value.type
+      value = global_parameter.value.value
+    }
   }
 
   dynamic "vsts_configuration" {

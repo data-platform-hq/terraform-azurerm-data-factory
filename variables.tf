@@ -135,3 +135,13 @@ variable "managed_private_endpoint" {
   description = "The ID  and sub resource name of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to"
   default     = []
 }
+
+variable "global_parameter" {
+  type = list(object({
+    name  = string
+    type  = optional(string, "String")
+    value = string
+  }))
+  default     = []
+  description = "Configuration of automation modules"
+}
