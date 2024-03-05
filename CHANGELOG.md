@@ -1,3 +1,12 @@
+## [1.3.3](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.2...v1.3.3) (2024-03-05)
+
+
+### Bug Fixes
+
+* add end line ([4d200a6](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/4d200a67a118d207313d1dc02881485aa120f5c5))
+* global parameter ([a2b28ca](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/a2b28cabbc447a7ec3813fbf2a4303f8d955a78a))
+* replaced pre-commit repo docs creation/update by GH Actions ([97e7f9e](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/97e7f9e5f782f77f19cf8b8c60d8fc4042f06672))
+
 ## [1.3.2](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.1...v1.3.2) (2023-11-25)
 
 
