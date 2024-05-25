@@ -38,6 +38,12 @@ resource "azurerm_data_factory" "this" {
       tenant_id       = var.vsts_configuration.tenant_id
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      global_parameter,
+    ]
+  }
 }
 
 resource "azurerm_role_assignment" "data_factory" {
