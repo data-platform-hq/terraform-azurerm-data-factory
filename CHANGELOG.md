@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.3...v1.3.4) (2024-05-25)
+
+
+### Bug Fixes
+
+* ignore global parameters chages ([d7fa8fa](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/d7fa8fa320230d8b3aa74e037a02f501592bcc5f))
+
 ## [1.3.3](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.2...v1.3.3) (2024-05-01)
 
 
