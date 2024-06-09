@@ -25,7 +25,6 @@ resource "azurerm_data_factory" "this" {
       value = global_parameter.value.value
     }
   }
-
   dynamic "vsts_configuration" {
     for_each = length(var.vsts_configuration) == 0 ? [] : [var.vsts_configuration]
 

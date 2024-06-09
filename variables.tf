@@ -131,6 +131,8 @@ variable "managed_private_endpoint" {
     name               = string
     target_resource_id = string
     subresource_name   = string
+    type               = optional(string)
+    resource_id        = optional(string)
   }))
   description = "The ID  and sub resource name of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to"
   default     = []
@@ -143,5 +145,11 @@ variable "global_parameter" {
     value = string
   }))
   default     = []
-  description = "Configuration of data factory global parameters"
+  description = "Configuration of adf global parameters"
+}
+
+variable "storage_account_id" {
+  type        = string
+  default     = null
+  description = "storage Account Id"
 }
