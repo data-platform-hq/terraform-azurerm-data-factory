@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.4...v1.4.0) (2024-09-10)
+
+
+### Features
+
+* upgrade to AzureRM v4 ([64405d7](https://github.com/data-platform-hq/terraform-azurerm-data-factory/commit/64405d7b050533f25c96f8b9dfba95dd3abcd9ef))
+
 ## [1.3.4](https://github.com/data-platform-hq/terraform-azurerm-data-factory/compare/v1.3.3...v1.3.4) (2024-05-25)
 
 
